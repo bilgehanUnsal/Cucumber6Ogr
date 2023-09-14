@@ -19,7 +19,7 @@ public class _02_CountrySteps {
         ln.myClick(ln.countries);
     }
 
-    @When("Create country")
+    @When("Create a country")
     public void createCountry() {
         String ulkeAdi= RandomStringUtils.randomAlphanumeric(8); // 8 harf
         String ulkeKodu=RandomStringUtils.randomNumeric(4); // 4 rakam
@@ -32,6 +32,15 @@ public class _02_CountrySteps {
 
     @Then("Success message should be displayed")
     public void successMessageShouldBeDisplayed() {
-        dc.verifyContainsText(dc.successMessage, "oluşturuldu");
+
+        dc.verifyContainsText(dc.successMessage, "successfully");
+    }
+
+    @When("Create a country name as {string} code as {string}")
+    public void createACountryNameAsCodeAs(String name, String kod) {
+        dc.myClick(dc.addButon);
+        dc.mySendKeys(dc.nameInput, name);
+        dc.mySendKeys(dc.codeInput, kod);
+        dc.myClick(dc.saveButton);
     }
 }

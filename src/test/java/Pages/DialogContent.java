@@ -35,6 +35,9 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-text-field[contains(@formcontrolname, 'name')]//input")
     public WebElement nameInput;
 
+    @FindBy(xpath = "//ms-text-field[contains(@formcontrolname, 'shortName')]//input")
+    public WebElement shortNameInput;
+
     @FindBy(xpath = "//ms-text-field[contains(@formcontrolname, 'code')]//input")
     public WebElement codeInput;
 
