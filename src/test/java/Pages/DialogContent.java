@@ -47,5 +47,21 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//div[contains(text(), 'successfully')]")
     public WebElement successMessage;
 
+    @FindBy (xpath = "//div[contains(text(), 'already exists')]")
+    public WebElement unSuccessMessage;
 
+    @FindBy (css = "ms-delete-button[class='ng-star-inserted'] button")
+    public WebElement deleteIcon;
+
+    @FindBy (xpath = "//div[@class='ng-star-inserted']/button[@type='submit']")
+    public WebElement deleteButton;
+
+    @FindBy (css = "[data-placeholder='Name']")
+    public WebElement searchText;
+
+    @FindBy (css = "[class='control-full'] button")
+    public WebElement searchButton;
+
+    @FindBy (css = "[aria-label='Close dialog']")
+    public WebElement closeButton;
 }

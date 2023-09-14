@@ -35,4 +35,9 @@ public class Parent {
         wait.until(ExpectedConditions.textToBePresentInElement(element,value));
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
     }
+
+    public void verifyContainsText_Negative(WebElement element, String value){
+        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
+        Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
+    }
 }
