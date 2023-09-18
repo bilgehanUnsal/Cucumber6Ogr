@@ -20,9 +20,8 @@ Feature: Citizenship Delete Scenario
     When Create a citizenship name as "<name>" short name as "<shortname>"
     Then Already exist message should be displayed
 
-    When Search created citizenship name as "<name>" short name as "<shortname>"
-    And Delete created citizenship
-    Then Success delete message should be displayed
+    When User delete the "<name>"
+    Then Success message should be displayed
 
     Examples:
       | name  | shortname |
