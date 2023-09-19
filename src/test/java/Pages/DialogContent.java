@@ -66,6 +66,20 @@ public class DialogContent extends Parent{
     @FindBy(xpath="//button[@type='submit']")
     public WebElement deleteDialogBtn;
 
+    @FindBy(xpath = "//ms-text-field[contains(@formcontrolname, 'IntegrationCode')]//input")
+    public WebElement integrationCode;
+
+    @FindBy(xpath = "//ms-integer-field[contains(@formcontrolname, 'priority')]//input")
+    public WebElement priority;
+
+    @FindBy(xpath = "(//ms-save-button[@class= 'ng-star-inserted']//button)[2]")
+    public WebElement saveAndClose;
+
+    @FindBy(xpath = "//mat-slide-toggle[@formcontrolname='active']")
+    public WebElement activeButton;
+
+
+
     public void deleteItem(String searchText){
         mySendKeys(searchInput, searchText);
         myClick(searchButton);
@@ -78,5 +92,18 @@ public class DialogContent extends Parent{
 
         myClick(deleteImageBtn);
         myClick(deleteDialogBtn);
+    }
+    public WebElement getWebElement(String strElement){
+        switch (strElement){
+            case "addButon": return this.addButon;
+            case "saveButton": return this.saveButton;
+            case "nameInput": return this.nameInput;
+            case "codeInput": return this.codeInput;
+            case "integrationCode": return this.integrationCode;
+            case "priority": return this.priority;
+            case "saveAndClose": return this.saveAndClose;
+            case "activeButton": return this.activeButton;
+        }
+        return null;
     }
 }
