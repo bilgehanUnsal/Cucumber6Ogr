@@ -45,4 +45,11 @@ public class Parent {
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
         driverAksiyon.sendKeys(Keys.ESCAPE).build().perform();
     }
+
+    public void myJsClick(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
+        scrollToElement(element);
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].click();", element);
+    }
 }
