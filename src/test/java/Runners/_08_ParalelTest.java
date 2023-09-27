@@ -6,6 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
 @CucumberOptions(
@@ -15,7 +16,7 @@ import org.testng.annotations.Parameters;
         plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"} )
 public class _08_ParalelTest extends AbstractTestNGCucumberTests {
 
-    @Before
+    @BeforeClass
     @Parameters("browserTipi")
     public void BeforeClass(String browserName){
         GWD.threadBrowserName.set(browserName);

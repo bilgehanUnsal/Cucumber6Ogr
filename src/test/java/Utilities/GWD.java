@@ -21,29 +21,21 @@ public class GWD {
         Locale.setDefault(new Locale("EN"));
         System.setProperty("user.language", "EN");
 
-        if (threadBrowserName.get() == null)
+        if (threadBrowserName.get() == null) {
             threadBrowserName.set("chrome");
+        }
 
         if (threadDriver.get() == null) { // ilk kez 1 defa çalışsın
 
             switch (threadBrowserName.get()) {
-                case "firefox":
-                    threadDriver.set(new FirefoxDriver());
-                    break; // ilgili thread e driver set ettim
-                case "safari":
-                    threadDriver.set(new SafariDriver());
-                    break;
-                case "edge":
-                    threadDriver.set(new EdgeDriver());
-                    break;
-                default:
-                    threadDriver.set(new ChromeDriver());
-                    break;
+                case "firefox": threadDriver.set(new FirefoxDriver());break; // ilgili thread e driver set ettim
+                case "safari": threadDriver.set(new SafariDriver());break;
+                case "edge": threadDriver.set(new EdgeDriver());break;
+                default: threadDriver.set(new ChromeDriver());break;
             }
         }
 
         // gelen browser ismine göre chrome, edge, firefox switch üretip
-        threadDriver.set(new ChromeDriver());
         threadDriver.get().manage().window().maximize();
         threadDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         return threadDriver.get();

@@ -3,7 +3,7 @@
 <suite name="mySuit" parallel="tests" thread-count="2">
 
     <test name="myTest1">
-        <parameter name="browserTipi" value="edge"/>
+        <parameter name="browserTipi" value="edge"></parameter>
 
         <classes>
             <class name="Runners._08_ParalelTest"> </class>
@@ -12,7 +12,7 @@
     </test>
 
     <test name="myTest2">
-        <parameter name="browserTipi" value="firefox"/>
+        <parameter name="browserTipi" value="firefox"></parameter>
 
         <classes>
             <class name="Runners._08_ParalelTest"> </class>
