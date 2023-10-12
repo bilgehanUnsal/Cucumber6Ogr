@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class JDBCParent {
 
     public static Connection baglanti;
+    public static Statement sorguEkrani;
 
     @BeforeClass
     public void DBConnectionOpen(){
@@ -20,7 +21,7 @@ public class JDBCParent {
 
         try {
             baglanti = DriverManager.getConnection(hostURL, username, password);
-            Statement sorguEkrani = baglanti.createStatement();
+            sorguEkrani = baglanti.createStatement();
         } catch (Exception ex){
             System.out.println("ex.getMessage() = " + ex.getMessage());
         }
