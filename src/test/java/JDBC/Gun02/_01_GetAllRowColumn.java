@@ -6,6 +6,8 @@ import org.testng.annotations.Test;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class _01_GetAllRowColumn extends JDBCParent {
     @Test
@@ -53,16 +55,49 @@ public class _01_GetAllRowColumn extends JDBCParent {
         }
         System.out.println();
 
-        while (rs.next()){
+        while (rs.next()) {
             for (int i = 1; i <= columnCount; i++) {
                 System.out.printf("%-20s", rs.getString(i));
             }
             System.out.println();
         }
+        // % : değişkenin değerini işaret eder
+        // - : sola dayalı yazdırır, default sağa dayalı
+        // 20: kaç hane kullanılacak herzaman onun bilgisi
+        // s : string değerler içis , sayısal değerler için d kullanılır
+        // "%5.2f" : sayı için 5 hane kullan, ondalıklı kısım için 2 hane
     }
-    // % : değişkenin değerini işaret eder
-    // - : sola dayalı yazdırır, default sağa dayalı
-    // 20: kaç hane kullanılacak herzaman onun bilgisi
-    // s : string değerler içis , sayısal değerler için d kullanılır
-    // "%5.2f" : sayı için 5 hane kullan, ondalıklı kısım için 2 hane
+
+    @Test
+    public void test4() throws SQLException {
+        // bir metoda sorguyu("select * from language") gönderiniz,
+        // metod size sorgunun datasını bir ArrayList olarak döndürsün
+
+        String sorgu="select * from language";
+        List<List<String>>  donenList =getListData(sorgu);
+        System.out.println("donenList = " + donenList);
+    }
+
+    public List<List<String>> getListData(String sorgu){
+        List<List<String>> tablo=new ArrayList<>();
+
+        try {
+            ResultSet rs = sorguEkrani.executeQuery(sorgu);
+            ResultSetMetaData rsmd=rs.getMetaData();
+
+            while (rs.next()) {
+                List<String> satir=new ArrayList<>();
+                for (int i = 1; i < rsmd.getColumnCount(); i++) {
+                    satir.add(rs.getString(i));
+                }
+
+                tablo.add(satir);
+            }
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+
+        return tablo;
+    }
 }
