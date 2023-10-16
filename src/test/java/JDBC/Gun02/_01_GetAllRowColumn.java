@@ -39,4 +39,30 @@ public class _01_GetAllRowColumn extends JDBCParent {
             System.out.println(rsmd.getColumnName(i) + "\t" + rsmd.getColumnTypeName(i));
         }
     }
+
+    @Test
+    public void test3() throws SQLException {
+        ResultSet rs = sorguEkrani.executeQuery("select * from language");
+
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        int columnCount = rsmd.getColumnCount();
+
+        for (int i = 1; i <= columnCount; i++) {
+            System.out.printf("%-20s", rsmd.getColumnName(i));
+        }
+        System.out.println();
+
+        while (rs.next()){
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.printf("%-20s", rs.getString(i));
+            }
+            System.out.println();
+        }
+    }
+    // % : değişkenin değerini işaret eder
+    // - : sola dayalı yazdırır, default sağa dayalı
+    // 20: kaç hane kullanılacak herzaman onun bilgisi
+    // s : string değerler içis , sayısal değerler için d kullanılır
+    // "%5.2f" : sayı için 5 hane kullan, ondalıklı kısım için 2 hane
 }
