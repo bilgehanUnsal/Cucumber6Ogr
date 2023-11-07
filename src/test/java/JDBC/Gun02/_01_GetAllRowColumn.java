@@ -100,4 +100,6 @@ public class _01_GetAllRowColumn extends JDBCParent {
 
         return tablo;
     }
+
+    // TODO (Challenge): DB den customer tablosunu okuyarak. Yeni bir EXCEL e yazdırınız.
 }
